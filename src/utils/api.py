@@ -21,7 +21,11 @@ def get_input(day):
 
     if not exists(path):
         url = get_url(YEAR, day)
-        response = requests.get(url, cookies={"session": SESSION})
+        headers = requests.utils.default_headers()
+        headers.update(
+            {"User-Agent": "github.com/tomfran/advent-of-code-setup reddit:fran-sch"}
+        )
+        response = requests.get(url, headers=headers, cookies={"session": SESSION})
         if not response.ok:
             raise RuntimeError(
                 f"Request failed\n\tstatus code: {response.status_code}\n\tmessage: {response.content}"
