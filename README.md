@@ -1,6 +1,6 @@
 # Advent of code setup
 
-Jump start your AoC experience with this repo.
+Jumpstart your Advent of Code experience. Automate input downloads and easily create templates for your solutions, so you can focus on solving the challenges.
 
 ## Setup
 Run `make setup`, this will create the `inputs` directory and the `session.cookie` file, please remember to fill the latter with your session cookie to auto-download inputs, and add a newline after it, just in case.
