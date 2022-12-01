@@ -14,6 +14,10 @@ def get_url(year, day):
 YEAR = 2022
 SESSION_ID_FILE = "session.cookie"
 SESSION = get_session_id(SESSION_ID_FILE)
+HEADERS = {
+    "User-Agent": "github.com/tomfran/advent-of-code-setup reddit:u/fran-sch, discord:@tomfran#5786"
+}
+COOKIES = {"session": SESSION}
 
 
 def get_input(day):
@@ -21,11 +25,7 @@ def get_input(day):
 
     if not exists(path):
         url = get_url(YEAR, day)
-        headers = requests.utils.default_headers()
-        headers.update(
-            {"User-Agent": "github.com/tomfran/advent-of-code-setup reddit:fran-sch"}
-        )
-        response = requests.get(url, headers=headers, cookies={"session": SESSION})
+        response = requests.get(url, headers=HEADERS, cookies=COOKIES)
         if not response.ok:
             raise RuntimeError(
                 f"Request failed\n\tstatus code: {response.status_code}\n\tmessage: {response.content}"
